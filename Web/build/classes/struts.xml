@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<package name="struts2" extends="struts-default" namespace="/">
+		<action name="login" class="loginAction">
+			<result name="success">/index.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="register" class="registerAction">
+			<result name="success">/info.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="userinfo" class="userInfoAction">
+			<result name="success">/UserInfo.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="listOnesClubsInfo" class="listOnesClubsInfoAction">
+			<result name="success">/listOnesClubsInfo.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="deleteClubContact" class="deleteClubContactAction">
+			<result name="success">/info.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="showOneClubInfo" class="showOneClubInfoAction">
+			<result name="success">/showOneClubInfo.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="registerOneClub" class="registerOneClubAction">
+			<result name="success">/info.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="listClubsActivited" class="listClubsActivitedAction">
+			<result name="success">/listClubsActivited.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="joinAClub" class="joinAClubAction">
+			<result name="success">/info.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="logout" class="logoutAction">
+			<result name="success">/info.jsp</result>
+		</action>
+		<action name="showAClubInfoMange" class="showAClubInfoMangeAction">
+			<result name="success">/showAClubInfoMange.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="changeAClubInfo" class="changeAClubInfoAction">
+			<result name="success">/info.jsp</result>
+		</action>
+		<action name="userMangerInAClub" class="userMangerInAClubAction">
+			<result name="success">/userMangerInAClub.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+		<action name="agreeJoinAClub" class="agreeJoinAClubAction">
+			<result name="success">/info.jsp</result>
+			<result name="faile">/info.jsp</result>
+		</action>
+	</package>
+</struts>    

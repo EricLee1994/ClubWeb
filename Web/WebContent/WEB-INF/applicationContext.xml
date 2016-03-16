@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	
+	<!-- Service配置 -->
+	<bean id="loginService" class="service.LoginService">
+		<property name="userinfoDAO">
+			<ref bean="userinfoDAO" />
+		</property>
+	</bean>
+	<bean id="registerService" class="service.RegisterService">
+		<property name="userinfoDAO">
+			<ref bean="userinfoDAO" />
+		</property>
+	</bean>
+	<bean id="userinfoService" class="service.UserinfoService">
+		<property name="userinfoDAO">
+			<ref bean="userinfoDAO" />
+		</property>
+	</bean>
+	<bean id="clubService" class="service.ClubService">
+		<property name="clubDAO">
+			<ref bean="clubDAO" />
+		</property>
+		<property name="userinfoDAO">
+			<ref bean="userinfoDAO" />
+		</property>
+	</bean>
+	<bean id="clubcontactService" class="service.ClubcontactService">
+		<property name="clubDAO">
+			<ref bean="clubDAO" />
+		</property>
+		<property name="clubcontactDAO">
+			<ref bean="clubcontactDAO" />
+		</property>
+		<property name="userinfoDAO">
+			<ref bean="userinfoDAO" />
+		</property>
+	</bean>
+	
+	<!-- Action配置 -->
+	<bean name="loginAction" class="action.LoginAction">
+		<property name="loginService">
+			<ref bean="loginService" />
+		</property>
+		<property name="clubService">
+			<ref bean="clubService" />
+		</property>
+	</bean>
+	<bean name="logoutAction" class="action.LogoutAction">
+	</bean>
+	<bean name="registerAction" class="action.RegisterAction">
+		<property name="registerService">
+			<ref bean="registerService" />
+		</property>
+	</bean>
+	<bean name="userInfoAction" class="action.UserInfoAction">
+		<property name="userinfoService">
+			<ref bean="userinfoService" />
+		</property>
+	</bean>
+	<bean name="listOnesClubsInfoAction" class="action.ListOnesClubsInfoAction">
+		<property name="clubcontactService">
+			<ref bean="clubcontactService" />
+		</property>
+	</bean>
+	<bean name="deleteClubContactAction" class="action.DeleteClubContactAction">
+		<property name="clubcontactService">
+			<ref bean="clubcontactService" />
+		</property>
+	</bean>
+	<bean name="showOneClubInfoAction" class="action.ShowOneClubInfoAction">
+		<property name="clubService">
+			<ref bean="clubService" />
+		</property>
+		<property name="clubcontactService">
+			<ref bean="clubcontactService" />
+		</property>
+	</bean>
+	<bean name="registerOneClubAction" class="action.RegisterOneClubAction">
+		<property name="clubService">
+			<ref bean="clubService" />
+		</property>
+	</bean>
+	<bean name="listClubsActivitedAction" class="action.ListClubsActivitedAction">
+		<property name="clubService">
+			<ref bean="clubService" />
+		</property>
+		<property name="clubcontactService">
+			<ref bean="clubcontactService" />
+		</property>
+	</bean>
+	<bean name="joinAClubAction" class="action.JoinAClubAction">
+		<property name="clubcontactService">
+			<ref bean="clubcontactService" />
+		</property>
+	</bean>
+	<bean name="showAClubInfoMangeAction" class="action.ShowAClubInfoMangeAction">
+		<property name="clubService">
+			<ref bean="clubService" />
+		</property>
+	</bean>
+	<bean name="changeAClubInfoAction" class="action.ChangeAClubInfoAction">
+		<property name="clubService">
+			<ref bean="clubService" />
+		</property>
+	</bean>
+	<bean name="userMangerInAClubAction" class="action.UserMangerInAClubAction">
+		<property name="clubService">
+			<ref bean="clubService" />
+		</property>
+		<property name="clubcontactService">
+			<ref bean="clubcontactService" />
+		</property>
+	</bean>
+	<bean name="agreeJoinAClubAction" class="action.AgreeJoinAClubAction">
+		<property name="clubcontactService">
+			<ref bean="clubcontactService" />
+		</property>
+	</bean>
+	
+	<!-- DAO配置 -->
+	<bean id="userinfoDAO" class="dao.UserinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="clubDAO" class="dao.ClubDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="clubcontactDAO" class="dao.ClubcontactDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="activityDAO" class="dao.ActivityDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="activitycontactDAO" class="dao.ActivitycontactDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>
